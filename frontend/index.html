@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InCred NeoBank Loan Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">InCred NeoBank</div>
+      <nav>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#products">Products</a>
+        <a href="#partners">Partners</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a><a href="#dashboard">Dashboard</a>
+      </nav>
+      <div class="state-wrap"><span id="userState">Not signed in</span><button id="logoutBtn" class="btn ghost hidden">Logout</button></div>
+    </header>
+
+    <main>
+      <section id="home" class="hero section card tilt">
+        <div>
+          <p class="eyebrow">DIGITAL LENDING, REIMAGINED</p>
+          <h1>Advanced banking-grade lending platform with smart operations tooling.</h1>
+          <p class="sub">Includes 3D interactions, role-driven workspaces, auto ticket assignment, application status workflows, and super-admin traffic analytics.</p>
+          <div class="hero-actions"><a class="btn" href="#dashboard">Open Dashboard</a><a class="btn ghost" href="#products">Explore Products</a></div>
+        </div>
+        <div class="metrics" id="publicStats"></div>
+      </section>
+
+      <section id="about" class="section card tilt"><h2>About</h2><p>InCred NeoBank is engineered to provide intelligent lending operations with compliance-minded controls, transparent status flow, and superior customer support orchestration.</p></section>
+
+      <section id="products" class="section card"><h2>Loan Products</h2>
+        <div class="grid three">
+          <article class="tilt"><h3>Personal Loan</h3><p>Instant, paper-light approvals.</p></article>
+          <article class="tilt"><h3>Home Loan</h3><p>Flexible tenure and top-up options.</p></article>
+          <article class="tilt"><h3>Business Loan</h3><p>Working capital and growth financing.</p></article>
+          <article class="tilt"><h3>Education Loan</h3><p>Domestic and overseas education funding.</p></article>
+          <article class="tilt"><h3>Vehicle Loan</h3><p>Quick disbursal and custom terms.</p></article>
+          <article class="tilt"><h3>Gold Loan</h3><p>Secure and rapid collateralized lending.</p></article>
+        </div>
+      </section>
+
+      <section id="partners" class="section card"><h2>Strategic Partners</h2><div id="partnersList" class="grid three"></div></section>
+      <section id="reviews" class="section card"><h2>Customer Reviews</h2><div id="reviewsList" class="grid three"></div></section>
+      <section id="faq" class="section card"><h2>FAQ</h2><div id="faqList" class="faq-list"></div></section>
+
+      <section id="contact" class="section card">
+        <h2>Contact</h2>
+        <form id="contactForm" class="form-grid two">
+          <input name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+          <button class="btn" type="submit">Submit Contact Request</button>
+        </form>
+        <div id="contactResult" class="muted"></div>
+      </section>
+
+      <section id="dashboard" class="section card">
+        <h2>Secure Dashboard</h2>
+        <div class="grid two" id="authBox">
+          <form id="registerForm" class="form-grid"><h3>Client Register</h3><input name="name" placeholder="Name" required /><input type="email" name="email" placeholder="Email" required /><input type="password" name="password" placeholder="Password" required /><button class="btn" type="submit">Register</button></form>
+          <form id="loginForm" class="form-grid"><h3>Sign In</h3><input type="email" name="email" placeholder="Email" required /><input type="password" name="password" placeholder="Password" required /><button class="btn" type="submit">Login</button><p class="muted">Admin: admin@incred.local/admin123 | Super Admin: superadmin@incred.local/superadmin123</p></form>
+        </div>
+
+        <section class="card hidden" id="emiPanel"><h3>EMI Calculator</h3>
+          <form id="emiForm" class="form-grid three"><input type="number" name="principal" placeholder="Principal" required min="1" /><input type="number" name="annual_rate" placeholder="Annual Rate %" required min="0.1" step="0.01" /><input type="number" name="months" placeholder="Months" required min="1" /><button class="btn" type="submit">Calculate EMI</button></form>
+          <div id="emiResult" class="muted"></div>
+        </section>
+
+        <section class="card hidden" id="clientPanel">
+          <h3>Client Workspace</h3>
+          <form id="applicationForm" class="form-grid" enctype="multipart/form-data">
+            <select name="loan_type" required><option value="">Select Loan Type</option><option>Personal Loan</option><option>Home Loan</option><option>Business Loan</option><option>Education Loan</option><option>Vehicle Loan</option><option>Gold Loan</option></select>
+            <input type="number" name="amount" required min="1000" placeholder="Amount" />
+            <textarea name="purpose" required placeholder="Purpose"></textarea>
+            <label>ID Proof <input type="file" name="id_proof" required /></label>
+            <label>Income Proof <input type="file" name="income_proof" required /></label>
+            <label>Address Proof <input type="file" name="address_proof" required /></label>
+            <button class="btn" type="submit">Submit Application</button>
+          </form>
+
+          <form id="additionalDocForm" class="form-grid">
+            <h4>Upload Additional Document (if requested)</h4>
+            <input type="number" name="application_id" min="1" placeholder="Application ID" required />
+            <input type="file" name="document" required />
+            <button class="btn" type="submit">Upload Extra Document</button>
+          </form>
+
+          <form id="ticketForm" class="form-grid"><input name="subject" required placeholder="Ticket subject" /><textarea name="message" required placeholder="Ticket message"></textarea><select name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select><button class="btn" type="submit">Create Ticket</button></form>
+
+          <h4>My Applications</h4><div id="myApplications"></div>
+          <h4>My Tickets</h4><div id="myTickets"></div>
+        </section>
+
+        <section class="card hidden" id="adminPanel">
+          <h3>Admin Operations Console</h3>
+          <h4>All Applications</h4><div id="adminApplications"></div>
+          <h4>All Tickets (Auto-assigned)</h4><div id="adminTickets"></div>
+        </section>
+
+        <section class="card hidden" id="superAdminPanel">
+          <h3>Super Admin Command Center</h3>
+          <div id="trafficStats" class="grid three"></div>
+          <h4>Top API Paths</h4><div id="topPaths"></div>
+          <h4>Role Traffic Breakdown</h4><div id="roleBreakdown"></div>
+        </section>
+      </section>
+
+      <div id="toast"></div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
